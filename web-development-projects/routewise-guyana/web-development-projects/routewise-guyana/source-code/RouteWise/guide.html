@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your guide to using Guyana's minibus system, including how routes, fares, and stops work.">
+    <title>Guide - RouteWise Guyana</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="images/bus.png" alt="Bus" width="52" height="52" />
+        <span>RouteWise Guyana</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="routes.html">Routes</a>
+        <a href="map.html">Map</a>
+        <a href="guide.html" class="active">Guide</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+    </div>
+
+    <div class="guide-hero">
+      <div class="grid-paper-container">
+        <span class="masking-tape hero-tape">FIRST TIME? NO PROBLEM.</span>
+        <h1 class="guide-title">Your guide to Guyana's Minibus System</h1>
+        <p class="guide-subtitle">
+          Everything you need to know before you board
+        </p>
+
+        <svg
+          class="scribble-lines"
+          width="80"
+          height="80"
+          viewBox="0 0 100 100"
+          fill="none"
+          stroke="#1a1a1a"
+          stroke-width="3"
+          stroke-linecap="round"
+        >
+          <line x1="20" y1="80" x2="40" y2="60" />
+          <line x1="50" y1="90" x2="55" y2="65" />
+          <line x1="80" y1="80" x2="65" y2="60" />
+        </svg>
+      </div>
+
+      <div class="polaroid-frame">
+        <div class="cross-tape"></div>
+        <img src="images/food.webp" alt="Guyana Minibus" />
+
+        <div class="kraft-note">
+          Getting around Guyana, made easy.
+          <br />
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#1a1a1a"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-top: 5px"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div class="sec-eyebrow">The Basics</div>
+      <div class="sec-heading">How the system works</div>
+      <div class="info-grid">
+        <div class="route-card guide-card">
+          <div class="icon-doodle">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1a1a1a"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </div>
+          <h3>How Routes Work</h3>
+          <p>
+            Minibuses in Guyana operate on numbered routes radiating from main
+            terminals at Stabroek Market. Each route has a fixed number and a
+            general corridor: East Coast, East Bank, West Coast, or Linden
+            Highway.
+          </p>
+        </div>
+
+        <div class="route-card guide-card">
+          <div class="icon-doodle">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1a1a1a"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+          <h3>Understanding Fares</h3>
+          <p>
+            Fares are regulated by the government and vary by distance. Typical
+            fares range from GYD $100 for short Georgetown trips to GYD $500+
+            for longer routes. Always know your estimated fare before boarding.
+          </p>
+        </div>
+
+        <div class="route-card guide-card">
+          <div class="icon-doodle">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1a1a1a"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3>Where to Board</h3>
+          <p>
+            Buses depart from designated bus parks at Stabroek Market. Along
+            routes, they also pick up passengers at informal stops. Look for
+            clusters of people waiting at roadsides. Wave to flag the bus down.
+          </p>
+        </div>
+
+        <div class="route-card guide-card warning-card">
+          <div class="icon-doodle">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1a1a1a"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+              ></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <h3>If You're Overcharged</h3>
+          <p>
+            Fares are regulated. If a driver charges above the listed amount,
+            you have grounds to dispute it. Use our feedback form to report
+            overcharging. Your report helps keep fares fair for all commuters.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps-section">
+      <div class="sec-eyebrow">Using This Site</div>
+      <div class="sec-heading">Step-by-step</div>
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-big-num">1</div>
+          <h3>Search for your route</h3>
+          <p>
+            Use the search bar on the home page. Enter your starting point or
+            destination, try "Stabroek" or "Turkeyen", and matching routes will
+            appear instantly.
+          </p>
+        </div>
+
+        <div class="step-item">
+          <div class="step-big-num">2</div>
+          <h3>Browse the stop list and map</h3>
+          <p>
+            Click any route card to open its detail page. You'll see every stop
+            along the route, key landmarks nearby, and an interactive map
+            showing the full path.
+          </p>
+        </div>
+
+        <div class="step-item">
+          <div class="step-big-num">3</div>
+          <h3>Check your estimated fare</h3>
+          <p>
+            The estimated fare range is shown clearly on every route. Remember
+            these are estimates. Always verify with the conductor, and report it
+            if you're charged more than the regulated amount.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="sec-eyebrow">FAQ</div>
+      <div class="sec-heading">Common questions</div>
+
+      <div class="faq-item closed">
+        <div class="faq-q">
+          <span class="faq-q-text"
+            >Is this data official or government-approved?</span
+          >
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          No. RouteWise Guyana is a student project. All route and fare data has
+          been collected by students through direct observation and research. It
+          is provided for general guidance only. Always confirm details with the
+          driver or conductor.
+        </div>
+      </div>
+
+      <div class="faq-item closed">
+        <div class="faq-q">
+          <span class="faq-q-text"
+            >Do I need to create an account to use this site?</span
+          >
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          No account is required. All route and fare information is freely
+          accessible to everyone with no login needed.
+        </div>
+      </div>
+
+      <div class="faq-item closed">
+        <div class="faq-q">
+          <span class="faq-q-text">How do I know where to catch the bus?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          The main departure point for most routes is Stabroek Market bus park
+          in Georgetown. Check the stop list on each route's detail page for
+          stops along the way.
+        </div>
+      </div>
+
+      <div class="faq-item closed">
+        <div class="faq-q">
+          <span class="faq-q-text"
+            >What if a route or fare on this site is wrong?</span
+          >
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">
+          Use our Feedback page to report it. We review all submissions and
+          update the data accordingly. Your reports directly improve the
+          accuracy of RouteWise Guyana for all users.
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-strip">
+      <div class="cta-inner">
+        <h3>Ready to find your route?</h3>
+        <p>Search all corridors. No login needed, no fuss.</p>
+        <div class="cta-action">
+          <a href="routes.html">
+            <button class="dir-btn">Browse all routes &rarr;</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <span class="masking-tape">CSE 2201 PROJECT</span>
+          <h3>RouteWise Guyana</h3>
+          <p class="typewriter-text">Internet Computing I</p>
+          <p class="typewriter-text">Lecturer: Lenandlar Singh</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="members-heading">Group Members</h4>
+          <ul class="typewriter-text group-list">
+            <li>Kaylee Carter - 1051799</li>
+            <li>Khaleel Khan - 1054193</li>
+            <li>Ravindra Persaud - 1052507</li>
+            <li>Vimla Persaud - 1052339</li>
+            <li>Tulsidai Singh - 1052682</li>
+            <li>Tushaant Sanichara - 1053976</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="notice-heading">Project Notice</h4>
+          <p class="notice-text">
+            Fares are estimated from the 2018 Ministry of Business / United
+            Minibus Union structure. Always confirm with your conductor.<br /><br />
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 RouteWise Guyana &middot; University of Guyana
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive map of Guyana minibus routes, with route paths and stop locations.">
+    <title>Map - RouteWise Guyana</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="images/bus.png" alt="Bus" width="52" height="52" />
+        <span>RouteWise Guyana</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="routes.html">Routes</a>
+        <a href="map.html" class="active">Map</a>
+        <a href="guide.html">Guide</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+    </div>
+
+    <div class="map-page-container">
+      <aside class="map-sidebar">
+        <h2>Routes by Corridor</h2>
+
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Georgetown <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="route-link" data-route="40">
+              Route 40 - Kitty / Campbellville
+            </div>
+            <div class="route-link" data-route="41">
+              Route 41 - South Ruimveldt / Guyhoc
+            </div>
+            <div class="route-link" data-route="45">
+              Route 45 - Central Georgetown
+            </div>
+            <div class="route-link" data-route="46">Route 46 - Lodge</div>
+            <div class="route-link" data-route="47">
+              Route 47 - East &amp; West Ruimveldt
+            </div>
+            <div class="route-link" data-route="48">Route 48 - Sophia</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            East Coast Demerara <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="route-link" data-route="44">Route 44 - Mahaica</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            East Bank Demerara <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="route-link" data-route="42">
+              Route 42 - Timehri / CJIA Airport
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item active">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            West Bank Demerara <span>-</span>
+          </button>
+          <div class="accordion-content" style="display: flex">
+            <div class="route-link active-route" data-route="31">
+              Route 31 - Patentia / Wales
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            West Coast Demerara <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="route-link" data-route="32">Route 32 - Parika</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Berbice <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="route-link" data-route="50">
+              Route 50 - New Amsterdam
+            </div>
+            <div class="route-link" data-route="56">Route 56 - Rosignol</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAccordion(this)">
+            Linden <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="route-link" data-route="43">Route 43 - Linden</div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="map-wrapper">
+        <div id="map"></div>
+        <div class="map-bottom-banner" id="routeBanner">
+          <h3 id="bannerTitle">Route 31: Georgetown to Patentia / Wales</h3>
+          <p id="bannerCorridor">Corridor: West Coast Demerara</p>
+          <div class="banner-meta">
+            <div>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span id="bannerTime">Est. Time: ~45 mins</span>
+            </div>
+            <div>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+                <circle cx="12" cy="12" r="2"></circle>
+                <path d="M6 12h.01M18 12h.01"></path>
+              </svg>
+              <span id="bannerFare">Est. Fare: $140 - $220</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <span class="masking-tape">CSE 2201 PROJECT</span>
+          <h3>RouteWise Guyana</h3>
+          <p class="typewriter-text">Internet Computing I</p>
+          <p class="typewriter-text">Lecturer: Lenandlar Singh</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="members-heading">Group Members</h4>
+          <ul class="typewriter-text group-list">
+            <li>Kaylee Carter - 1051799</li>
+            <li>Khaleel Khan - 1054193</li>
+            <li>Ravindra Persaud - 1052507</li>
+            <li>Vimla Persaud - 1052339</li>
+            <li>Tulsidai Singh - 1052682</li>
+            <li>Tushaant Sanichara - 1053976</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="notice-heading">Project Notice</h4>
+          <p class="notice-text">
+            Fares are estimated from the 2018 Ministry of Business / United
+            Minibus Union structure. Always confirm with your conductor.<br /><br />
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 RouteWise Guyana &middot; University of Guyana
+      </div>
+    </footer>
+
+    <!-- routes-data.js must load before main.js or allRoutes is undefined -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/routes-data.js"></script>
+    <script src="js/main.js"></script>
+    <!-- initMapPage() sets up the leaflet map and loads route 31 by default -->
+    <script>
+      initMapPage();
+    </script>
+  </body>
+</html>

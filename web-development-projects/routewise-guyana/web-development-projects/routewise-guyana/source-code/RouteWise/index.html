@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="RouteWise Guyana - find minibus routes, fares, and stops across Georgetown and surrounding corridors.">
+    <title>RouteWise Guyana</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="images/bus.png" alt="Bus" width="52" height="52" />
+        <span>RouteWise Guyana</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="routes.html">Routes</a>
+        <a href="map.html">Map</a>
+        <a href="guide.html">Guide</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+    </div>
+
+    <header class="site-hero">
+      <h1>Navigate Guyana with Ease</h1>
+      <p>Find accurate routes, fares and stops for your journey</p>
+
+      <div class="hero-form-wrapper">
+        <form class="hero-form" id="heroSearchForm" autocomplete="off">
+          <div class="bottom-row">
+            <input
+              type="text"
+              id="heroSearch"
+              placeholder="Search destination or route number..."
+            />
+            <button type="submit">Search</button>
+          </div>
+          <div class="hero-results" id="heroResults"></div>
+        </form>
+      </div>
+    </header>
+
+    <!-- hidden by default, main.js shows it if localStorage has any saved routes -->
+    <div
+      id="welcomeMessage"
+      class="route-card"
+      style="
+        display: none;
+        max-width: 500px;
+        margin: 40px auto 30px auto;
+        text-align: center;
+        border-color: #d97e30;
+        background-color: #fcfbf8;
+        z-index: 10;
+      "
+    >
+      <span
+        class="masking-tape"
+        style="
+          position: absolute;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%) rotate(-2deg);
+          z-index: 20;
+        "
+        >YOUR FAVORITES</span
+      >
+
+      <p
+        class="typewriter-text"
+        style="font-size: 16px; margin-top: 20px; margin-bottom: 10px"
+      >
+        Quick access to your saved routes:
+      </p>
+
+      <!-- main.js injects the links in here -->
+      <div
+        id="favLinksContainer"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+        "
+      ></div>
+    </div>
+
+    <section class="section">
+      <h2>Popular Routes</h2>
+      <div class="routes-grid">
+        <div
+          class="home-route-card"
+          onclick="window.location = 'route-detail.html?route=44'"
+        >
+          <div class="route-card-top">
+            <div class="paper-badge" style="background-color: #d8a5d8">
+              <span class="lbl">Route</span>
+              <span class="num">44</span>
+            </div>
+            <div class="route-details">
+              <span class="dest-title">Mahaica</span>
+              <div class="meta-row">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path d="M6 12h.01M18 12h.01"></path>
+                </svg>
+                <span class="typewriter-text">Est: $100 - $260</span>
+              </div>
+              <div class="meta-row">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span class="typewriter-text">Time: ~1 hr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="home-route-card"
+          onclick="window.location = 'route-detail.html?route=42'"
+        >
+          <div class="route-card-top">
+            <div class="paper-badge" style="background-color: #ffd97e">
+              <span class="lbl">Route</span>
+              <span class="num">42</span>
+            </div>
+            <div class="route-details">
+              <span class="dest-title">Timehri / Airport</span>
+              <div class="meta-row">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path d="M6 12h.01M18 12h.01"></path>
+                </svg>
+                <span class="typewriter-text">Est: $100 - $260</span>
+              </div>
+              <div class="meta-row">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span class="typewriter-text">Time: ~1 hr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="home-route-card"
+          onclick="window.location = 'route-detail.html?route=32'"
+        >
+          <div class="route-card-top">
+            <div class="paper-badge" style="background-color: #c8e575">
+              <span class="lbl">Route</span>
+              <span class="num">32</span>
+            </div>
+            <div class="route-details">
+              <span class="dest-title">Parika</span>
+              <div class="meta-row">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path d="M6 12h.01M18 12h.01"></path>
+                </svg>
+                <span class="typewriter-text">Est: $140 - $420</span>
+              </div>
+              <div class="meta-row">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1a1a1a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span class="typewriter-text">Time: ~1 hr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <a href="routes.html" class="view-all-link">View all routes</a>
+    </section>
+
+    <section class="section">
+      <h2>Choose your direction</h2>
+      <div class="direction-grid">
+        <button
+          class="dir-btn"
+          style="background-color: #7cc0ff"
+          onclick="window.location = 'routes.html?corridor=georgetown'"
+        >
+          Georgetown
+        </button>
+        <button
+          class="dir-btn"
+          style="background-color: #d8a5d8"
+          onclick="window.location = 'routes.html?corridor=east-coast'"
+        >
+          East Coast Demerara
+        </button>
+        <button
+          class="dir-btn"
+          style="background-color: #ffd97e"
+          onclick="window.location = 'routes.html?corridor=east-bank'"
+        >
+          East Bank Demerara
+        </button>
+        <button
+          class="dir-btn"
+          style="background-color: #c8e575"
+          onclick="window.location = 'routes.html?corridor=west-coast'"
+        >
+          West Coast Demerara
+        </button>
+        <button
+          class="dir-btn"
+          style="background-color: #f2c2e0"
+          onclick="window.location = 'routes.html?corridor=west-bank'"
+        >
+          West Bank Demerara
+        </button>
+        <button
+          class="dir-btn"
+          style="background-color: #b5ead7"
+          onclick="window.location = 'routes.html?corridor=linden'"
+        >
+          Linden
+        </button>
+        <button
+          class="dir-btn"
+          style="background-color: #ffb3b3"
+          onclick="window.location = 'routes.html?corridor=berbice'"
+        >
+          Berbice
+        </button>
+      </div>
+
+      <div class="center-block">
+        <a href="routes.html" class="view-all-link">Click to explore routes</a>
+      </div>
+    </section>
+
+    <section class="section" style="margin-bottom: 20px">
+      <h2>How it Works</h2>
+      <div class="how-grid">
+        <article class="how-item">
+          <h3>1. Search</h3>
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#1a1a1a"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <p>Enter your start and end points.</p>
+        </article>
+
+        <article class="how-item">
+          <h3>2. Explore</h3>
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#1a1a1a"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <p>View routes, stops and fares.</p>
+        </article>
+
+        <article class="how-item">
+          <h3>3. Travel</h3>
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#1a1a1a"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path
+              d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+            ></path>
+          </svg>
+          <p>Board with confidence. Know your fare before you board.</p>
+        </article>
+      </div>
+
+      <div class="center-block tight">
+        <svg
+          width="50"
+          height="60"
+          viewBox="0 0 24 36"
+          fill="none"
+          stroke="#1a1a1a"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M 12 2 C 16 15 8 20 12 32" />
+          <polyline points="6 26 12 33 18 26" />
+        </svg>
+      </div>
+
+      <a href="guide.html" class="learn-btn">Learn More in the Guide</a>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <span class="masking-tape">CSE 2201 PROJECT</span>
+          <h3>RouteWise Guyana</h3>
+          <p class="typewriter-text">Internet Computing I</p>
+          <p class="typewriter-text">Lecturer: Lenandlar Singh</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="members-heading">Group Members</h4>
+          <ul class="typewriter-text group-list">
+            <li>Kaylee Carter - 1051799</li>
+            <li>Khaleel Khan - 1054193</li>
+            <li>Ravindra Persaud - 1052507</li>
+            <li>Vimla Persaud - 1052339</li>
+            <li>Tulsidai Singh - 1052682</li>
+            <li>Tushaant Sanichara - 1053976</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="notice-heading">Project Notice</h4>
+          <p class="notice-text">
+            Fares are estimated from the 2018 Ministry of Business / United
+            Minibus Union structure. Always confirm with your conductor.<br /><br />
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 RouteWise Guyana &middot; University of Guyana
+      </div>
+    </footer>
+
+    <!-- routes-data.js must load before main.js or allRoutes is undefined -->
+    <script src="js/routes-data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

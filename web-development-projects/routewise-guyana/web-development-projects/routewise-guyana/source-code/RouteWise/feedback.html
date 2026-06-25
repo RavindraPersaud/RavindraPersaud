@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Report an issue or send feedback about routes, fares, or stops on RouteWise Guyana.">
+    <title>Feedback - RouteWise Guyana</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="images/bus.png" alt="Bus" width="52" height="52" />
+        <span>RouteWise Guyana</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="routes.html">Routes</a>
+        <a href="map.html">Map</a>
+        <a href="guide.html">Guide</a>
+        <a href="feedback.html" class="active">Feedback</a>
+      </nav>
+    </div>
+
+    <header class="page-header">
+      <h1 class="sec-heading">Report an Issue or Feedback</h1>
+      <p class="guide-subtitle">
+        Help us keep Guyana's public transport data accurate. Whether it's a
+        fare change, a bad experience, or a missing stop, your report matters.
+      </p>
+    </header>
+
+    <main class="form-section">
+      <div class="form-card">
+        <span class="masking-tape form-tape">OFFICIAL REPORT FORM</span>
+
+        <!-- main.js checks ?submitted=1 or ?error=.. and fills this div in
+                 php cant write here directly after a POST so it redirects back first -->
+        <div id="formStatus" class="form-status"></div>
+
+        <!-- POST goes to process_feedback.php which writes to submissions.txt then redirects back -->
+        <form action="process_feedback.php" method="POST">
+          <div class="form-row">
+            <div class="field">
+              <label>Your Name</label>
+              <input
+                type="text"
+                name="name"
+                class="scrap-input"
+                placeholder="e.g. John Doe (Optional)"
+              />
+            </div>
+            <div class="field">
+              <label>Your Email</label>
+              <input
+                type="email"
+                name="email"
+                class="scrap-input"
+                placeholder="name@domain.com (For follow-up)"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label>Report Category <span class="required">*</span></label>
+              <select name="category" class="scrap-input" required>
+                <option value="">-- Select Category --</option>
+                <option>Fare Overcharging</option>
+                <option>Incorrect Route Information</option>
+                <option>Missing Stop/Landmark</option>
+                <option>Driver/Conductor Conduct</option>
+                <option>Map Glitch or Bug</option>
+                <option>General Feedback</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Related Route</label>
+              <select name="route" class="scrap-input">
+                <option value="">-- Applicable Route --</option>
+                <option>Route 31 (West Bank - Patentia / Wales)</option>
+                <option>Route 32 (West Coast - Parika)</option>
+                <option>Route 40 (Kitty / Campbellville)</option>
+                <option>Route 41 (South Ruimveldt / Guyhoc)</option>
+                <option>Route 42 (Timehri / CJIA)</option>
+                <option>Route 43 (Linden)</option>
+                <option>Route 44 (Mahaica)</option>
+                <option>Route 45 (Central Georgetown)</option>
+                <option>Route 46 (Lodge)</option>
+                <option>Route 47 (East &amp; West Ruimveldt)</option>
+                <option>Route 48 (Sophia)</option>
+                <option>Route 50 (New Amsterdam)</option>
+                <option>Route 56 (Rosignol)</option>
+                <option>Other / Not Listed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label>Date / Time of Incident</label>
+              <input
+                type="datetime-local"
+                name="datetime"
+                class="scrap-input"
+              />
+            </div>
+            <div class="field">
+              <label>Minibus License Plate (Optional)</label>
+              <input
+                type="text"
+                name="plate"
+                class="scrap-input"
+                placeholder="e.g. BZZ 1234"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Detailed Description <span class="required">*</span></label>
+            <span class="sub-label"
+              >Please provide as much context as possible (exact locations, fare
+              quoted vs paid, etc.)</span
+            >
+            <textarea
+              name="description"
+              class="scrap-input"
+              placeholder="Describe what happened or what needs to be fixed..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="submit-wrap">
+            <button type="submit" class="send-btn">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              Submit Official Report
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <span class="masking-tape">CSE 2201 PROJECT</span>
+          <h3>RouteWise Guyana</h3>
+          <p class="typewriter-text">Internet Computing I</p>
+          <p class="typewriter-text">Lecturer: Lenandlar Singh</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="members-heading">Group Members</h4>
+          <ul class="typewriter-text group-list">
+            <li>Kaylee Carter - 1051799</li>
+            <li>Khaleel Khan - 1054193</li>
+            <li>Ravindra Persaud - 1052507</li>
+            <li>Vimla Persaud - 1052339</li>
+            <li>Tulsidai Singh - 1052682</li>
+            <li>Tushaant Sanichara - 1053976</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="notice-heading">Project Notice</h4>
+          <p class="notice-text">
+            Fares are estimated from the 2018 Ministry of Business / United
+            Minibus Union structure. Always confirm with your conductor.<br /><br />
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 RouteWise Guyana &middot; University of Guyana
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse all minibus routes in Guyana, filter by corridor, and view fares from Stabroek Market.">
+    <title>Routes - RouteWise Guyana</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="index.html" class="nav-brand">
+        <img src="images/bus.png" alt="Bus" width="52" height="52" />
+        <span>RouteWise Guyana</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="routes.html" class="active">Routes</a>
+        <a href="map.html">Map</a>
+        <a href="guide.html">Guide</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+    </div>
+
+    <div class="routes-page-header">
+      <h1>Explore all Minibus Routes</h1>
+      <p class="typewriter-text">
+        Fares shown are from Stabroek Market. Click a route for stop-by-stop
+        breakdown.
+      </p>
+    </div>
+
+    <!-- data-corridor values must match the corridor field in routes-data.js exactly -->
+    <div class="filter-bar">
+      <button
+        class="dir-btn filter-btn active"
+        data-corridor="all"
+        style="background-color: #c8e575"
+      >
+        All Routes
+      </button>
+      <button
+        class="dir-btn filter-btn"
+        data-corridor="georgetown"
+        style="background-color: #7cc0ff"
+      >
+        Georgetown
+      </button>
+      <button
+        class="dir-btn filter-btn"
+        data-corridor="east-coast"
+        style="background-color: #d8a5d8"
+      >
+        East Coast Demerara
+      </button>
+      <button
+        class="dir-btn filter-btn"
+        data-corridor="east-bank"
+        style="background-color: #ffd97e"
+      >
+        East Bank Demerara
+      </button>
+      <button
+        class="dir-btn filter-btn"
+        data-corridor="west-bank"
+        data-corridor-label="West Bank"
+        style="background-color: #f2c2e0"
+      >
+        West Bank Demerara
+      </button>
+      <button
+        class="dir-btn filter-btn"
+        data-corridor="west-coast"
+        style="background-color: #c8e575"
+      >
+        West Coast Demerara
+      </button>
+      <button
+        class="dir-btn filter-btn"
+        data-corridor="linden"
+        style="background-color: #b5ead7"
+      >
+        Linden
+      </button>
+      <button
+        class="dir-btn filter-btn"
+        data-corridor="berbice"
+        style="background-color: #ffb3b3"
+      >
+        Berbice
+      </button>
+    </div>
+
+    <div class="search-row">
+      <div class="scrap-input-wrapper">
+        <input
+          type="text"
+          id="searchInput"
+          class="scrap-input"
+          placeholder="Search by route number or destination..."
+        />
+      </div>
+      <div class="scrap-input-wrapper">
+        <select id="sortSelect" class="scrap-input">
+          <option value="num-asc">Sort by Route Number</option>
+          <option value="fare-asc">Sort by Fare (Low to High)</option>
+          <option value="fare-desc">Sort by Fare (High to Low)</option>
+        </select>
+      </div>
+    </div>
+
+    <section class="routes-section">
+      <div class="routes-grid" id="routesGrid"></div>
+      <div class="pagination" id="pagination"></div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <span class="masking-tape">CSE 2201 PROJECT</span>
+          <h3>RouteWise Guyana</h3>
+          <p class="typewriter-text">Internet Computing I</p>
+          <p class="typewriter-text">Lecturer: Lenandlar Singh</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="members-heading">Group Members</h4>
+          <ul class="typewriter-text group-list">
+            <li>Kaylee Carter - 1051799</li>
+            <li>Khaleel Khan - 1054193</li>
+            <li>Ravindra Persaud - 1052507</li>
+            <li>Vimla Persaud - 1052339</li>
+            <li>Tulsidai Singh - 1052682</li>
+            <li>Tushaant Sanichara - 1053976</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="notice-heading">Project Notice</h4>
+          <p class="notice-text">
+            Fares are estimated from the 2018 Ministry of Business / United
+            Minibus Union structure. Always confirm with your conductor.<br /><br />
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 RouteWise Guyana &middot; University of Guyana
+      </div>
+    </footer>
+
+    <!-- routes-data.js must load before main.js or allRoutes is undefined -->
+    <script src="js/routes-data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

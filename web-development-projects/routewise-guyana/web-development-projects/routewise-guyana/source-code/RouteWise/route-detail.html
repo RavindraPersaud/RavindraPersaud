@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Route details including stops, fares, landmarks, and an interactive map.">
+    <title>Route Detail - RouteWise Guyana</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="nav-brand">
+        <a href="index.html" class="nav-brand">
+          <img src="images/bus.png" alt="Bus" width="52" height="52" />
+          <span>RouteWise Guyana</span>
+        </a>
+      </div>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="routes.html" class="active">Routes</a>
+        <a href="map.html">Map</a>
+        <a href="guide.html">Guide</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+    </div>
+
+    <section class="detail-hero">
+      <div class="hero-left">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="routes.html">Routes</a> /
+          <span class="crumb-active" id="heroRouteName"></span>
+        </div>
+        <div class="masking-tape" id="heroBadge"></div>
+        <h1 id="heroTitle"></h1>
+        <p id="heroRegion"></p>
+      </div>
+      <div class="route-card info-card">
+        <div class="fare-time-block">
+          <svg
+            width="38"
+            height="38"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+            <circle cx="12" cy="12" r="2"></circle>
+            <path d="M6 12h.01M18 12h.01"></path>
+          </svg>
+          <div class="ft-data">
+            <span class="lbl">Full Route Fare</span>
+            <span class="val" id="heroFare"></span>
+          </div>
+        </div>
+
+        <div class="fare-time-block">
+          <svg
+            width="38"
+            height="38"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="ft-data">
+            <span class="lbl">Full Route Time</span>
+            <span class="val" id="heroTime"></span>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px; margin-bottom: 15px">
+          <button
+            id="favBtn"
+            class="dir-btn"
+            onclick="saveFavorite()"
+            style="
+              padding: 10px 20px;
+              min-height: unset;
+              background-color: #e5f1f5;
+              font-size: 15px;
+              width: 100%;
+              border: 2px solid #1a1a1a;
+            "
+          >
+            ☆ Save as Favorite
+          </button>
+        </div>
+
+        <p
+          class="typewriter-text"
+          style="font-size: 12px; color: #555; margin-top: 8px"
+        >
+          Click a stop below to see the fare from Stabroek Market to that point.
+        </p>
+      </div>
+    </section>
+
+    <section class="detail-main" id="detailMain">
+      <div class="stops-wrapper">
+        <span class="masking-tape stops-tape">ROUTE PLAN</span>
+        <div class="stops-panel">
+          <h2>Stops &amp; Sequence</h2>
+          <div class="fare-callout" id="fareCallout"></div>
+          <div id="stopsList"></div>
+
+          <div class="landmarks-section">
+            <div class="landmarks-title">Key Landmarks on Route:</div>
+            <div class="tags" id="landmarkTags"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-section">
+        <div class="map-box">
+          <div id="routeMap"></div>
+          <div class="map-loading" id="mapLoading">Drawing map...</div>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="circle dot-red"></div>
+            Full Route
+          </div>
+          <div class="legend-item">
+            <div class="circle dot-orange"></div>
+            Selected Stop
+          </div>
+          <div class="legend-item">
+            <div class="circle dot-blue"></div>
+            Terminals
+          </div>
+          <div class="legend-item">
+            <div class="circle dot-yellow"></div>
+            Stops
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-strip">
+      <div class="cta-inner">
+        <h3>Something wrong with this route?</h3>
+        <p>
+          Help us keep the data accurate. Report wrong fares, stops, or mapping
+          errors.
+        </p>
+        <div class="cta-action">
+          <a href="feedback.html">
+            <button class="dir-btn">File an Official Report &rarr;</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <span class="masking-tape">CSE 2201 PROJECT</span>
+          <h3>RouteWise Guyana</h3>
+          <p class="typewriter-text">Internet Computing I</p>
+          <p class="typewriter-text">Lecturer: Lenandlar Singh</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="members-heading">Group Members</h4>
+          <ul class="typewriter-text group-list">
+            <li>Kaylee Carter - 1051799</li>
+            <li>Khaleel Khan - 1054193</li>
+            <li>Ravindra Persaud - 1052507</li>
+            <li>Vimla Persaud - 1052339</li>
+            <li>Tulsidai Singh - 1052682</li>
+            <li>Tushaant Sanichara - 1053976</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="notice-heading">Project Notice</h4>
+          <p class="notice-text">
+            Fares are estimated from the 2018 Ministry of Business / United
+            Minibus Union structure. Always confirm with your conductor.<br /><br />
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 RouteWise Guyana &middot; University of Guyana
+      </div>
+    </footer>
+
+    <!-- routes-data.js must load before main.js or allRoutes is undefined -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/routes-data.js"></script>
+    <script src="js/main.js"></script>
+    <!-- initRouteDetail() reads ?route= from the URL to know which route to load -->
+    <script>
+      initRouteDetail();
+    </script>
+  </body>
+</html>
