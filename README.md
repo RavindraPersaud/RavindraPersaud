@@ -54,3 +54,4 @@ I am working toward a career that combines computer science, data analytics, bus
 
 ## Connect With Me
 * LinkedIn: linkedin.com/in/ravindra-persaud-769472259
+* https://github.com/RavindraPersaud/My-Projects
