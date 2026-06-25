@@ -55,3 +55,9 @@ I am working toward a career that combines computer science, data analytics, bus
 ## Connect With Me
 * LinkedIn: linkedin.com/in/ravindra-persaud-769472259
 * https://github.com/RavindraPersaud/My-Projects
+
+## Copyright and Usage
+
+All content in this repository is copyrighted by Ravindra Persaud and is provided for portfolio and academic demonstration purposes only.
+
+No permission is granted to copy, submit, redistribute, modify, or claim this work as your own. See [NOTICE.md](NOTICE.md) for details.
